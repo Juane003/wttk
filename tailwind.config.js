@@ -14,6 +14,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        backround: {
+          light: "#FBFBFB",
+          dark: "#0F0F0F",
+        },
+        surface: {
+          light: "#FFFFFF",
+          dark: "#1A1A1A",
+        },
+        mint: {
+          DEFAULT: "#34D399",
+        },
         primary: {
           0: "rgb(var(--color-primary-0)/<alpha-value>)",
           50: "rgb(var(--color-primary-50)/<alpha-value>)",

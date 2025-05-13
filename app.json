@@ -8,6 +8,10 @@
     "scheme": "workouttracker",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "androidNavigationBar": {
+      "backgroundColor": "#000000",
+      "barStyle": "dark-content"
+    },
     "ios": {
       "supportsTablet": true
     },

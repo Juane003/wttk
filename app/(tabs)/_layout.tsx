@@ -2,12 +2,14 @@ import COLORS from "@/constants/style";
 import AntDesign from "@expo/vector-icons/AntDesign";
 import { Tabs } from "expo-router";
 
+const isDevelopment = process.env.NODE_ENV === "development";
+
 export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: COLORS.mint,
-        headerShown: true,
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: "#1A1A1A",
         },
@@ -38,6 +40,7 @@ export default function TabLayout() {
           tabBarIcon: ({ color }) => (
             <AntDesign size={28} name="setting" color={color} />
           ),
+          href: isDevelopment ? "/settings" : null,
         }}
       />
     </Tabs>

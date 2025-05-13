@@ -5,6 +5,8 @@ import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persi
 import { QueryClient } from "@tanstack/react-query";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { Stack } from "expo-router";
+import { StatusBar } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 
 const queryClient = new QueryClient();
@@ -27,17 +29,20 @@ export default function RootLayout() {
       client={queryClient}
       persistOptions={{ persister: asyncPersister }}
     >
-      <ThemeProvider>
-        <GluestackThemeProvider>
-          <Stack
-            screenOptions={{
-              headerShown: false,
-            }}
-          >
-            <Stack.Screen name="(tabs)" />
-          </Stack>
-        </GluestackThemeProvider>
-      </ThemeProvider>
+      <SafeAreaProvider>
+        <ThemeProvider>
+          <GluestackThemeProvider>
+            <StatusBar hidden />
+            <Stack
+              screenOptions={{
+                headerShown: false,
+              }}
+            >
+              <Stack.Screen name="(tabs)" />
+            </Stack>
+          </GluestackThemeProvider>
+        </ThemeProvider>
+      </SafeAreaProvider>
     </PersistQueryClientProvider>
   );
 }

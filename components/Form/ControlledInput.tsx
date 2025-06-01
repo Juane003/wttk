@@ -5,7 +5,8 @@ type ControlledInputProps<T extends FieldValues> = {
   control: Control<T, any>;
   name: Path<T>;
   placeholder: string;
-  type?: "number" | "text";
+  keyboardType?: "number" | "text" ;
+  type?: "text" | "password";
 };
 
 const ControlledInput = <T extends FieldValues>({
@@ -13,6 +14,7 @@ const ControlledInput = <T extends FieldValues>({
   name,
   placeholder,
   type = "text",
+  keyboardType = "text",
 }: ControlledInputProps<T>) => {
   return (
     <Controller
@@ -28,9 +30,10 @@ const ControlledInput = <T extends FieldValues>({
         >
           <InputField
             {...field}
+            type={type}
             onChangeText={field.onChange}
             placeholder={placeholder}
-            keyboardType={type === "number" ? "numeric" : "default"}
+            keyboardType={keyboardType === "number" ? "numeric" : "default"}
           />
         </Input>
       )}

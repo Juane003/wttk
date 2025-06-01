@@ -34,8 +34,6 @@ const AddSetForm = ({ onSubmit, isPending, title }: AddSetFormProps) => {
     resolver: zodResolver(AddSetFormSchema),
   });
 
-  console.log(errors);
-
   const parseNumbers = (data: AddSetFormData) => {
     return {
       reps: parseInt(data.reps),
@@ -51,19 +49,19 @@ const AddSetForm = ({ onSubmit, isPending, title }: AddSetFormProps) => {
         control={control}
         name="reps"
         placeholder="Reps"
-        type="number"
+        keyboardType="number"
       />
       <ControlledInput
         control={control}
         name="weight"
         placeholder="Weight"
-        type="number"
+        keyboardType="number"
       />
       <ControlledInput
         control={control}
         name="rir"
         placeholder="RIR"
-        type="number"
+        keyboardType="number"
       />
       <Button
         onPress={handleSubmit((data) => {

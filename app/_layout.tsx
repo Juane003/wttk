@@ -1,4 +1,5 @@
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
+import { AuthProvider } from "@/context/AuthProvider";
 import { ThemeProvider } from "@/context/ThemeProvider";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { createAsyncStoragePersister } from "@tanstack/query-async-storage-persister";
@@ -31,16 +32,19 @@ export default function RootLayout() {
     >
       <SafeAreaProvider>
         <ThemeProvider>
-          <GluestackThemeProvider>
+          <AuthProvider>
+            <GluestackThemeProvider>
             <StatusBar hidden />
             <Stack
               screenOptions={{
                 headerShown: false,
               }}
             >
+              <Stack.Screen name="(auth)" />
               <Stack.Screen name="(tabs)" />
             </Stack>
-          </GluestackThemeProvider>
+            </GluestackThemeProvider>
+          </AuthProvider>
         </ThemeProvider>
       </SafeAreaProvider>
     </PersistQueryClientProvider>

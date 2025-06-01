@@ -21,10 +21,6 @@ export default function WorkoutIndex() {
           },
         });
       },
-      onError: (error) => {
-        console.log("error");
-        console.error(error);
-      },
     });
   };
 

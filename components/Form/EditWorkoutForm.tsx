@@ -3,15 +3,14 @@ import { getWorkoutName } from "@/utils/workout";
 import useGetWorkoutById from "@/api/workouts/useGetWorkoutById";
 import useUpdateWorkout from "@/api/workouts/useUpdateWorkout";
 import useDrawer from "@/hooks/useDrawer";
+import AntDesign from "@expo/vector-icons/AntDesign";
 import { Fragment } from "react";
 import { useForm } from "react-hook-form";
 import { Text, View } from "react-native";
 import Drawer from "../Drawer/Drawer";
-
-import ControlledInput from "./ControlledInput";
-
-import AntDesign from "@expo/vector-icons/AntDesign";
 import { Button, ButtonText } from "../ui/button";
+import { Menu, MenuItem, MenuItemLabel } from "../ui/menu";
+import ControlledInput from "./ControlledInput";
 
 const EditWorkoutNameForm = ({ workoutId }: { workoutId: string }) => {
   const { data: workout } = useGetWorkoutById(workoutId);
@@ -44,7 +43,13 @@ const EditWorkoutNameForm = ({ workoutId }: { workoutId: string }) => {
   );
 };
 
-const EditWorkoutName = ({ workoutId }: { workoutId: string }) => {
+const EditWorkoutName = ({
+  workoutId,
+  toggleAddExercise,
+}: {
+  workoutId: string;
+  toggleAddExercise: () => void;
+}) => {
   const { data: workout } = useGetWorkoutById(workoutId);
   const {
     isOpen: isEditWorkoutNameOpen,
@@ -58,12 +63,38 @@ const EditWorkoutName = ({ workoutId }: { workoutId: string }) => {
         <Text className="text-3xl text-start text-white">
           {getWorkoutName(workout)}
         </Text>
-        <Button variant="link" onPress={() => toggleEditWorkoutName(true)}>
-          <ButtonText>
-            <AntDesign name="edit" size={24} color="white" />
-          </ButtonText>
-        </Button>
+        <Menu
+          trigger={({ ...triggerProps }) => (
+            <Button variant="link" {...triggerProps}>
+              <ButtonText>
+                <AntDesign name="ellipsis1" size={24} color="white" />
+              </ButtonText>
+            </Button>
+          )}
+          placement="bottom"
+          className="w-[130px]"
+        >
+          <MenuItem
+            key="Add account"
+            textValue="Add account"
+            className="gap-2"
+            onPress={() => toggleEditWorkoutName(true)}
+          >
+            <AntDesign name="edit" size={16} color="white" />
+            <MenuItemLabel size="sm">Edit Name</MenuItemLabel>
+          </MenuItem>
+          <MenuItem
+            key="Community"
+            textValue="Community"
+            className="gap-2"
+            onPress={() => toggleAddExercise()}
+          >
+            <AntDesign name="plus" size={16} color="white" />
+            <MenuItemLabel size="sm">Add Exercise</MenuItemLabel>
+          </MenuItem>
+        </Menu>
       </View>
+
       <Drawer
         isOpen={isEditWorkoutNameOpen}
         onClose={() => toggleEditWorkoutName(false)}

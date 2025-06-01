@@ -155,6 +155,9 @@ export const config = {
     '--color-indicator-error': '185 28 28',
   }),
   dark: vars({
+    '--color-primary-main': '#6B3FBF',
+    '--color-primary-active': '#8153D1',
+    '--color-primary-text': '#ECE9F1',
     '--color-primary-0': '166 166 166',
     '--color-primary-50': '175 175 175',
     '--color-primary-100': '186 186 186',

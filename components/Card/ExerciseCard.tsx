@@ -3,9 +3,10 @@ import COLORS from "@/constants/style";
 import { ExerciseData, SetData } from "@/schemas/workoutSchema";
 import { cn } from "@/utils/cn";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import { Fragment } from "react";
 import { Text, View } from "react-native";
+import Divider from "../Divider/Divider";
 import { Button, ButtonText } from "../ui/button";
-import Card from "./Card";
 import SetCard from "./SetCard";
 type ExerciseCardProps = {
   data: ExerciseData;
@@ -33,9 +34,9 @@ const ExerciseCard = ({
   };
 
   const renderSet = (set: SetData) => (
-    <View key={set.id}>
+    <View key={set.id} className="mt-2">
       <SetCard
-        onDelete={handleDeleteSet(set.id)}
+        onDelete={readOnly ? undefined : handleDeleteSet(set.id)}
         reps={set.reps}
         weight={set.weight}
         rir={set.rir}
@@ -57,7 +58,9 @@ const ExerciseCard = ({
         )}
       >
         <View className="flex-row justify-between items-center">
-          <Text className="text-2xl text-white">{data.exercise}</Text>
+          <Text className="text-2xl font-semibold text-primary-main">
+            {data.exercise}
+          </Text>
           <Button
             action="positive"
             variant="outline"
@@ -71,20 +74,24 @@ const ExerciseCard = ({
             </ButtonText>
           </Button>
         </View>
-      </View>
-      {data.sets.length > 0 && (
-        <Card className="border border-primary-300 p-4">
-          <View className="gap-2 rounded-lg">
-            <View className="flex-row justify-between items-center ">
-              <Text className="text-base w-1/5 text-white">Reps</Text>
-              <Text className="text-base w-1/5 text-white">Weight</Text>
-              <Text className="text-base w-1/5 text-white">RIR</Text>
-              <Text className="text-base w-1/5 text-white"></Text>
+        {data.sets.length > 0 && (
+          <Fragment>
+            <View className="my-2">
+              <Divider />
             </View>
-            <View className="p-2 gap-2">{data.sets.map(renderSet)}</View>
-          </View>
-        </Card>
-      )}
+
+            <View className="gap-2 rounded-lg">
+              <View className="flex-row justify-between items-center ">
+                <Text className="text-base w-1/5 text-primary-main">Reps</Text>
+                <Text className="text-base w-1/5 text-primary-main">Weight</Text>
+                <Text className="text-base w-1/5 text-primary-main">RIR</Text>
+                <Text className="text-base w-1/5 text-primary-main"></Text>
+              </View>
+              <View className="p-2 gap-2">{data.sets.map(renderSet)}</View>
+            </View>
+          </Fragment>
+        )}
+      </View>
     </View>
   );
 };

@@ -11,14 +11,12 @@ import AddSetForm from "@/components/Form/AddSetForm";
 import { EditWorkoutName } from "@/components/Form/EditWorkoutForm";
 import PageContainer from "@/components/PageContainter/PageContainer";
 import { Button, ButtonSpinner, ButtonText } from "@/components/ui/button";
-import COLORS from "@/constants/style";
 import useDrawer from "@/hooks/useDrawer";
 import { ExerciseData, SetData } from "@/schemas/workoutSchema";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import { useQueryClient } from "@tanstack/react-query";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState } from "react";
-import { Text, View } from "react-native";
+import { View } from "react-native";
 import uuid from "react-native-uuid";
 
 export default function NewWorkoutPage() {
@@ -146,27 +144,12 @@ export default function NewWorkoutPage() {
       <View className="w-full items-center justify-center">
         <View className="p-4 gap-4">
           <View className="gap-1">
-            <EditWorkoutName workoutId={workoutId} />
+            <EditWorkoutName
+              workoutId={workoutId}
+              toggleAddExercise={() => toggleAddExercise(true)}
+            />
             <Divider />
           </View>
-
-          {!readOnly && (
-            <View className="flex-row justify-between items-center">
-              <Text className="text-3xl text-start text-white">
-                Add Exercise
-              </Text>
-              <Button
-                action="positive"
-                onPress={() => toggleAddExercise(true)}
-                size="xs"
-                variant="outline"
-              >
-                <ButtonText>
-                  <AntDesign name="plus" size={16} color={COLORS.mint} />
-                </ButtonText>
-              </Button>
-            </View>
-          )}
 
           {exercises && exercises.length > 0 && (
             <ExerciseCardList

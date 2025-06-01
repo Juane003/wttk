@@ -23,7 +23,7 @@ const OnGoingWorkoutCard = ({ workout }: { workout: WorkoutData }) => {
           Ongoing Workout
         </Text>
       </View>
-      <View className="flex-row gap-2">
+      <View className="flex-row gap-1">
         <Text className="text-white">Today at</Text>
         <Text className="text-white">
           {getTime(new Date(workout.createdAt))}

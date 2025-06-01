@@ -19,7 +19,7 @@ const ExerciseCardList = ({
 }: ExerciseCardListProps) => {
   const renderExercise = (exercise: ExerciseData) => {
     return (
-      <View key={exercise.id} className="mb-2">
+      <View key={exercise.id} className="mb-4">
         <ExerciseCard
           data={exercise}
           isSelected={id === exercise.id}

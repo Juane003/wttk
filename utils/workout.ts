@@ -1,8 +1,11 @@
 import { WorkoutData } from "@/schemas/workoutSchema";
+import { getFormattedDay } from "./date";
 
 const getWorkoutName = (workout: WorkoutData | undefined) => {
   if (workout) {
-    return `Workout - ${new Date(workout.createdAt).toLocaleDateString()}`;
+    return `Workout - ${getFormattedDay(new Date(workout.createdAt), {
+      weekday: undefined,
+    })}`;
   }
   return "Workout";
 };

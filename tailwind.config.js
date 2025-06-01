@@ -16,16 +16,24 @@ module.exports = {
       colors: {
         backround: {
           light: "#FBFBFB",
-          dark: "#0F0F0F",
+          dark:  "var(--color-background)",
         },
         surface: {
           light: "#FFFFFF",
-          dark: "#1A1A1A",
+          dark: "var(--color-card)",
         },
         mint: {
           DEFAULT: "#34D399",
         },
+
+        "primary-active": "var(--color-primary-active)",
+        accent: "var(--color-accent)",
+        danger: "var(--color-danger)",
+        "text-secondary": "var(--color-text-secondary)",
+        "border-base": "var(--color-border-base)",
+
         primary: {
+          'main': "var(--color-primary-text)",
           0: "rgb(var(--color-primary-0)/<alpha-value>)",
           50: "rgb(var(--color-primary-50)/<alpha-value>)",
           100: "rgb(var(--color-primary-100)/<alpha-value>)",
@@ -40,6 +48,7 @@ module.exports = {
           950: "rgb(var(--color-primary-950)/<alpha-value>)",
         },
         secondary: {
+          'main': "var(---color-text-secondary)",
           0: "rgb(var(--color-secondary-0)/<alpha-value>)",
           50: "rgb(var(--color-secondary-50)/<alpha-value>)",
           100: "rgb(var(--color-secondary-100)/<alpha-value>)",

@@ -15,12 +15,7 @@ const SetCard = ({ reps, weight, rir, onDelete }: SetCardProps) => {
       <Text className="text-base text-white w-1/5">{weight}KG</Text>
       <Text className="text-base text-white w-1/5">{rir}</Text>
       {onDelete && (
-        <Button
-          size="xs"
-          action="negative"
-          onPress={onDelete}
-          className="w-1/5"
-        >
+        <Button size="xs" action="negative" onPress={onDelete}>
           <ButtonText>
             <AntDesign name="delete" size={16} color="white" />
           </ButtonText>
